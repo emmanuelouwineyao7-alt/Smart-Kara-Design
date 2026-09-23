@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LogoSKD from './LogoSKD';
 import MobileMenu from './MobileMenu';
-import { Search, ShoppingCart, Menu } from 'lucide-react';
+import { Search, Menu, MessageCircle, Sun, Moon } from 'lucide-react';
 
 export default function Header({ 
   onOpenStudio, 
@@ -11,15 +11,16 @@ export default function Header({
   setActiveSection,
   currentPage = 'home',
   onNavigate,
-  cartCount = 0
+  theme = 'dark',
+  onToggleTheme
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const whatsappNumber = "22879800487";
 
   const navLinks = [
     { name: 'Accueil', href: '#accueil', id: 'accueil' },
     { name: 'À propos', href: '#a-propos', id: 'a-propos' },
-    { name: 'Nos produits', href: '#nos-produits', id: 'nos-produits' },
-    { name: 'Personnalisation', href: '#studio-personnalisation', id: 'studio-personnalisation', isStudio: true },
+    { name: 'Nos produits', href: '#nos-produits', id: 'nos-produits', isProducts: true },
     { name: 'Galerie', href: '#galerie', id: 'galerie', isGallery: true },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
@@ -28,6 +29,16 @@ export default function Header({
     if (link.isStudio) {
       e.preventDefault();
       onOpenStudio && onOpenStudio();
+      return;
+    }
+
+    if (link.isProducts) {
+      e.preventDefault();
+      if (onNavigate) {
+        onNavigate('products');
+      } else {
+        window.location.hash = '#nos-produits';
+      }
       return;
     }
 
@@ -48,6 +59,11 @@ export default function Header({
     } else {
       setActiveSection && setActiveSection(link.id);
     }
+  };
+
+  const handleWhatsAppHeaderClick = () => {
+    const text = encodeURIComponent("Bonjour SMART KARA DESIGN, je souhaite passer une commande.");
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   };
 
   return (
@@ -73,7 +89,9 @@ export default function Header({
             {/* Navigation Desktop centrée */}
             <nav className="hidden lg:flex items-center space-x-7">
               {navLinks.map((link) => {
-                const isItemActive = link.isGallery
+                const isItemActive = link.isProducts
+                  ? currentPage === 'products'
+                  : link.isGallery
                   ? currentPage === 'gallery'
                   : (currentPage === 'home' && activeSection === link.id);
 
@@ -94,37 +112,40 @@ export default function Header({
               })}
             </nav>
 
-            {/* Actions à droite : Recherche, Panier, Bouton Commander */}
-            <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Actions à droite : Recherche, Thème & Bouton Commander WhatsApp */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
               {/* Bouton recherche */}
               <button
                 onClick={onSearchClick}
-                className="p-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-full transition-colors"
+                className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200 cursor-pointer"
                 title="Rechercher"
                 aria-label="Rechercher un produit"
               >
                 <Search className="w-5 h-5" />
               </button>
 
-              {/* Bouton panier avec badge bleu */}
+              {/* Bouton Theme Switcher (Sombre / Lumineux) */}
               <button
-                onClick={onOpenQuote}
-                className="relative p-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-full transition-colors"
-                title="Panier"
-                aria-label="Afficher le panier"
+                onClick={onToggleTheme}
+                className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200 cursor-pointer flex items-center justify-center relative group"
+                title={theme === 'dark' ? 'Passer en thème lumineux' : 'Passer en thème sombre'}
+                aria-label="Changer le thème"
               >
-                <ShoppingCart className="w-5 h-5" />
-                <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-[#0066FF] text-white text-[10px] font-bold flex items-center justify-center">
-                  {cartCount}
-                </span>
+                {theme === 'dark' ? (
+                  <Sun className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
+                ) : (
+                  <Moon className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
+                )}
               </button>
 
-              {/* Bouton Commander */}
+              {/* Bouton Commander bleu direct WhatsApp */}
               <button
-                onClick={onOpenQuote}
-                className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md hover:shadow-blue-600/30 transform hover:-translate-y-0.5 active:translate-y-0"
+                onClick={handleWhatsAppHeaderClick}
+                className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/30 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                title="Commander via WhatsApp"
               >
-                Commander
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Commander</span>
               </button>
 
               {/* Bouton Hamburger Mobile */}
@@ -151,6 +172,8 @@ export default function Header({
         onNavigate={onNavigate}
         onOpenQuote={onOpenQuote}
         onOpenStudio={onOpenStudio}
+        theme={theme}
+        onToggleTheme={onToggleTheme}
       />
     </>
   );

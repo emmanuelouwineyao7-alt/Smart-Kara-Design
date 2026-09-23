@@ -8,6 +8,7 @@ import AboutSection from './components/AboutSection';
 import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import GalleryPage from './components/GalleryPage';
+import ProductsPage from './components/ProductsPage';
 import StudioCustomizerModal from './components/StudioCustomizerModal';
 import QuoteModal from './components/QuoteModal';
 import ProductDetailModal from './components/ProductDetailModal';
@@ -17,22 +18,56 @@ import { CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => {
-    return typeof window !== 'undefined' && window.location.hash === '#galerie' ? 'gallery' : 'home';
+    if (typeof window !== 'undefined') {
+      if (window.location.hash === '#galerie') return 'gallery';
+      if (window.location.hash === '#produits' || window.location.hash === '#catalogue') return 'products';
+    }
+    return 'home';
   });
+
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('skd_theme');
+      if (savedTheme) return savedTheme;
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+      }
+    }
+    return 'dark';
+  });
+
   const [isStudioOpen, setIsStudioOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeSection, setActiveSection] = useState('accueil');
-  const [cartCount, setCartCount] = useState(0);
   const [toastMessage, setToastMessage] = useState(null);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+      root.classList.remove('dark');
+    } else {
+      root.classList.add('dark');
+      root.classList.remove('light');
+    }
+    localStorage.setItem('skd_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     const handleHashChange = () => {
       if (window.location.hash === '#galerie') {
         setCurrentPage('gallery');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (currentPage === 'gallery' && window.location.hash !== '#galerie') {
+      } else if (window.location.hash === '#produits' || window.location.hash === '#catalogue') {
+        setCurrentPage('products');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if ((currentPage === 'gallery' || currentPage === 'products') && window.location.hash !== '#galerie' && window.location.hash !== '#produits') {
         setCurrentPage('home');
       }
     };
@@ -48,18 +83,16 @@ export default function App() {
     }, 3000);
   };
 
-  const handleAddToCart = (product) => {
-    setCartCount((prev) => prev + 1);
-    showNotification(`"${product.title}" ajouté au panier !`);
-  };
-
   const navigateTo = (page, sectionId) => {
     setCurrentPage(page);
     if (page === 'gallery') {
       window.location.hash = '#galerie';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'products') {
+      window.location.hash = '#produits';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      if (window.location.hash === '#galerie') {
+      if (window.location.hash === '#galerie' || window.location.hash === '#produits') {
         window.history.pushState(null, '', window.location.pathname);
       }
       if (sectionId) {
@@ -79,7 +112,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050A10] text-white flex flex-col font-sans selection:bg-[#0066FF] selection:text-white">
+    <div className="min-h-screen bg-[#050A10] text-white flex flex-col font-sans selection:bg-[#0066FF] selection:text-white transition-colors duration-300">
       
       {/* Toast Notification */}
       {toastMessage && (
@@ -98,7 +131,8 @@ export default function App() {
         setActiveSection={setActiveSection}
         currentPage={currentPage}
         onNavigate={navigateTo}
-        cartCount={cartCount}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       {/* Main Content */}
@@ -109,40 +143,48 @@ export default function App() {
             onOpenStudio={() => setIsStudioOpen(true)}
             onOpenQuote={() => setIsQuoteOpen(true)}
           />
+        ) : currentPage === 'products' ? (
+          <ProductsPage
+            onBackToHome={() => navigateTo('home', 'accueil')}
+            onSelectProduct={(product) => setSelectedProduct(product)}
+            onOpenStudio={() => setIsStudioOpen(true)}
+          />
         ) : (
           <>
             {/* 1. Hero Section */}
             <Hero
-              onExploreClick={() => navigateTo('home', 'nos-produits')}
+              onExploreClick={(e) => {
+                if (e) e.preventDefault();
+                navigateTo('products');
+              }}
             />
 
             {/* 2. Barre des Services */}
             <ServicesBar
               onSelectFilter={(catId) => {
-                const element = document.getElementById('categories');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                navigateTo('products');
               }}
             />
 
-            {/* 3. Section Catégories (fond blanc) */}
+            {/* 3. Section Catégories */}
             <CategoriesSection
               onSelectCategory={(catId) => {
                 const matchedProduct = PRODUCTS.find((p) => p.categoryId === catId);
                 if (matchedProduct) {
                   setSelectedProduct(matchedProduct);
                 } else {
-                  navigateTo('home', 'nos-produits');
+                  navigateTo('products');
                 }
               }}
             />
 
-            {/* 4. Section Produits Phares (fond sombre) */}
+            {/* 4. Section Produits Phares */}
             <ProductsSection
               onProductClick={(product) => setSelectedProduct(product)}
-              onAddToCart={handleAddToCart}
+              onViewAll={() => navigateTo('products')}
             />
 
-            {/* 5. Section "Pourquoi nous choisir ?" (split-screen) */}
+            {/* 5. Section "Pourquoi nous choisir ?" */}
             <AboutSection />
 
             {/* 6. Section Contact / CTA */}

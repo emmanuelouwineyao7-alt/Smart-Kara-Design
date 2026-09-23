@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, FileText, Sparkles } from 'lucide-react';
+import { X, Send, CheckCircle2, FileText, MessageCircle } from 'lucide-react';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -9,6 +9,7 @@ export default function QuoteModal({ isOpen, onClose }) {
     projectType: 'Produit personnalisé',
     description: '',
   });
+  const whatsappNumber = "22879800487";
 
   if (!isOpen) return null;
 
@@ -25,14 +26,14 @@ export default function QuoteModal({ isOpen, onClose }) {
 
     // Prepare WhatsApp text message
     const message = encodeURIComponent(
-      `*Demande de Devis - SMART KARA DESIGN*\n` +
+      `*Demande de Devis / Commande - SMART KARA DESIGN*\n` +
       `• *Nom / Entreprise* : ${formData.name}\n` +
       `• *Téléphone / WhatsApp* : ${formData.phone}\n` +
       `• *Type de projet* : ${formData.projectType}\n` +
       `• *Description* : ${formData.description || 'Non précisé'}`
     );
 
-    window.open(`https://wa.me/22893456789?text=${message}`, '_blank');
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 
     setSubmitted(true);
     setTimeout(() => {
@@ -46,13 +47,13 @@ export default function QuoteModal({ isOpen, onClose }) {
       {/* Click outside backdrop */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
-      <div className="relative z-10 bg-[#080E1C] border border-blue-500/30 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
+      <div className="relative z-10 bg-[#080E1C] border border-emerald-500/30 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
         
         {/* Header */}
         <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between bg-[#050A10]">
           <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-[#0066FF]" />
-            <h3 className="text-lg font-bold text-white tracking-tight">Demander un devis</h3>
+            <FileText className="w-5 h-5 text-emerald-400" />
+            <h3 className="text-lg font-bold text-white tracking-tight">Commander / Demander un devis</h3>
           </div>
           <button 
             onClick={onClose} 
@@ -68,9 +69,9 @@ export default function QuoteModal({ isOpen, onClose }) {
             <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h4 className="text-xl font-bold text-white">Demande transmise avec succès !</h4>
+            <h4 className="text-xl font-bold text-white">Demande ouverte sur WhatsApp !</h4>
             <p className="text-sm text-gray-300">
-              Votre demande a été préparée sur WhatsApp. Notre atelier va vous répondre dans les plus brefs délais.
+              Votre message a été transféré sur WhatsApp. Notre atelier va vous répondre immédiatement.
             </p>
           </div>
         ) : (
@@ -87,7 +88,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                 placeholder="Votre nom ou le nom de votre société"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#0066FF] transition"
+                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition"
               />
             </div>
 
@@ -102,7 +103,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                 placeholder="+228 90 00 00 00"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#0066FF] transition"
+                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition"
               />
             </div>
 
@@ -114,7 +115,7 @@ export default function QuoteModal({ isOpen, onClose }) {
               <select
                 value={formData.projectType}
                 onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#0066FF] transition"
+                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition"
               >
                 {projectTypes.map((type) => (
                   <option key={type} value={type}>
@@ -134,18 +135,18 @@ export default function QuoteModal({ isOpen, onClose }) {
                 placeholder="Détaillez vos besoins (dimensions, matériaux souhaités, quantités, textes ou logos à graver)..."
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#0066FF] transition resize-none"
+                className="w-full bg-[#111827] border border-white/15 rounded-xl px-4 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition resize-none"
               ></textarea>
             </div>
 
-            {/* Bouton Envoyer la demande */}
+            {/* Bouton Envoyer la demande sur WhatsApp */}
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f7a6e] text-white font-bold text-sm transition-all duration-300 shadow-xl shadow-[#25D366]/30 hover:shadow-[#25D366]/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer border border-white/10"
               >
-                <Send className="w-4 h-4" />
-                <span>Envoyer la demande</span>
+                <MessageCircle className="w-5 h-5 fill-white text-white" />
+                <span>Envoyer la demande sur WhatsApp</span>
               </button>
             </div>
           </form>

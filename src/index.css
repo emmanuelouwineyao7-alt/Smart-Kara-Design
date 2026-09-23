@@ -5,12 +5,34 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   body {
     background-color: #0B0F19;
     color: #F9FAFB;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+}
+
+/* Light Theme Overrides */
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
 
 /* Custom Scrollbar */
@@ -36,6 +58,12 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
 .font-script {
   font-family: 'Caveat', cursive;
 }
@@ -52,6 +80,12 @@
   -webkit-text-fill-color: transparent;
 }
 
+html.light .text-gradient-bright {
+  background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .glow-blue {
   box-shadow: 0 0 25px -5px rgba(37, 99, 235, 0.4);
 }
@@ -62,6 +96,10 @@
 .card-hover-effect:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+html.light .card-hover-effect:hover {
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes fadeIn {
@@ -91,4 +129,118 @@
 .animate-slideDown {
   animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Specific Light Theme Component Overrides */
+
+/* Overall page sections with dark background in dark mode become light background in light mode */
+html.light .bg-\[\#050A10\],
+html.light .bg-\[\#070B13\],
+html.light .bg-\[\#0B0F19\] {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-\[\#050A10\]\/95 {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+}
+
+html.light .bg-\[\#080E1C\],
+html.light .bg-\[\#0F172A\],
+html.light .bg-\[\#0B111E\],
+html.light .bg-\[\#111827\] {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light .bg-\[\#0F172A\]\/50 {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+}
+
+/* Inversion rule: White background sections/cards (bg-white) in dark mode become dark/black background in light mode */
+html.light .bg-white,
+html.light .product-card {
+  background-color: #070B13 !important;
+  color: #F9FAFB !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html.light .bg-white .text-gray-900,
+html.light .bg-white .text-slate-900,
+html.light .bg-white .text-gray-800,
+html.light .bg-white .text-gray-700,
+html.light .bg-white h1,
+html.light .bg-white h2,
+html.light .bg-white h3,
+html.light .bg-white h4,
+html.light .bg-white p,
+html.light .product-card .product-title {
+  color: #F9FAFB !important;
+}
+
+html.light .bg-white .text-gray-600,
+html.light .bg-white .text-gray-500,
+html.light .bg-white .text-slate-600 {
+  color: #9CA3AF !important;
+}
+
+html.light .bg-white .border-gray-200,
+html.light .bg-white .border-gray-100 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html.light .bg-white .bg-gray-50,
+html.light .bg-white .bg-gray-100 {
+  background-color: #161F30 !important;
+  color: #F9FAFB !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+html.light .border-white\/10,
+html.light .border-white\/5,
+html.light .border-white\/15,
+html.light .border-white\/20 {
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+html.light .text-white {
+  color: #0F172A !important;
+}
+
+html.light .text-gray-300,
+html.light .text-gray-400 {
+  color: #475569 !important;
+}
+
+html.light .text-gray-200,
+html.light .text-gray-100 {
+  color: #1E293B !important;
+}
+
+html.light .hover\:text-white:hover {
+  color: #0F172A !important;
+}
+
+html.light .hover\:bg-white\/5:hover,
+html.light .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Ensure buttons with white text maintain white text when light mode is active */
+html.light .bg-\[\#0066FF\],
+html.light .bg-\[\#0066FF\] *,
+html.light .bg-blue-600 *,
+html.light .bg-emerald-500 *,
+html.light .btn-primary *,
+html.light [class*="from-[#25D366]"] *,
+html.light .bg-white button.bg-\[\#0066FF\],
+html.light .bg-white button.bg-\[\#0066FF\] * {
+  color: #FFFFFF !important;
+}
+
+html.light footer.bg-\[\#050A10\] {
+  background-color: #F1F5F9 !important;
+  border-top-color: #E2E8F0 !important;
+}
+
+
 

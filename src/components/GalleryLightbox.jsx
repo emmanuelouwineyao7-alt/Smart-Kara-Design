@@ -158,10 +158,10 @@ export default function GalleryLightbox({
 
             <button
               onClick={handleWhatsAppInquiry}
-              className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f7a6e] text-white font-bold text-sm transition-all duration-300 shadow-xl shadow-[#25D366]/30 hover:shadow-[#25D366]/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer border border-white/10"
             >
-              <MessageCircle className="w-5 h-5 fill-white" />
-              Commander sur WhatsApp
+              <MessageCircle className="w-5 h-5 fill-white text-white" />
+              <span>Commander sur WhatsApp</span>
             </button>
 
             {onOpenStudio && (

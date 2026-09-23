@@ -8,17 +8,17 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
   if (!isOpen || !product) return null;
 
   const handleWhatsAppInquiry = () => {
-    const text = encodeURIComponent(`Bonjour SMART KARA DESIGN (Kara), je souhaite commander / demander un devis pour le produit "${product.title}" (${product.price.toLocaleString('fr-FR')} FCFA). Gravure souhaitée: "${customInput}".`);
+    const text = encodeURIComponent(`Bonjour SMART KARA DESIGN, je souhaite commander le produit "${product.title}" (${product.price.toLocaleString('fr-FR')} FCFA). Texte/Gravure souhaité: "${customInput}".`);
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   };
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="relative bg-[#0F172A] border border-blue-500/30 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl">
+      <div className="relative bg-[#0F172A] border border-emerald-500/30 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl">
         
         {/* Header */}
         <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-[#0B0F19]">
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">{product.category}</span>
+          <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">{product.category}</span>
           <button onClick={onClose} className="p-1.5 rounded-full text-gray-400 hover:text-white hover:bg-white/10">
             <X className="w-5 h-5" />
           </button>
@@ -37,9 +37,9 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
           <div className="md:col-span-6 space-y-4 flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-bold text-white leading-tight">{product.title}</h3>
-              <p className="text-xs text-blue-400 mt-1 font-semibold">{product.subtitle}</p>
+              <p className="text-xs text-emerald-400 mt-1 font-semibold">{product.subtitle}</p>
 
-              <div className="mt-4 text-2xl font-extrabold text-blue-400">
+              <div className="mt-4 text-2xl font-extrabold text-emerald-400">
                 {product.price.toLocaleString('fr-FR')} FCFA
               </div>
 
@@ -50,16 +50,16 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
               {/* Specs */}
               <div className="mt-4 pt-3 border-t border-white/10 space-y-2 text-xs text-gray-400">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-blue-400" />
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   <span>Matériau: <strong className="text-gray-200">{product.material}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Ruler className="w-4 h-4 text-blue-400" />
+                  <Ruler className="w-4 h-4 text-emerald-400" />
                   <span>Dimensions: <strong className="text-gray-200">{product.dimensions}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-blue-400" />
-                  <span>Délai à Kara: <strong className="text-gray-200">{product.leadTime}</strong></span>
+                  <Clock className="w-4 h-4 text-emerald-400" />
+                  <span>Délai d'exécution: <strong className="text-gray-200">{product.leadTime}</strong></span>
                 </div>
               </div>
 
@@ -73,7 +73,7 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
                   value={customInput}
                   onChange={(e) => setCustomInput(e.target.value)}
                   placeholder="Entrez votre gravure..."
-                  className="w-full bg-[#1E293B] border border-white/15 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-blue-500 font-medium"
+                  className="w-full bg-[#1E293B] border border-white/15 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-500 font-medium"
                 />
               </div>
             </div>
@@ -82,22 +82,24 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
             <div className="space-y-2 pt-2">
               <button
                 onClick={handleWhatsAppInquiry}
-                className="w-full py-3.5 rounded-full font-bold text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-full font-bold text-xs sm:text-sm bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f7a6e] text-white shadow-lg shadow-[#25D366]/25 hover:shadow-[#25D366]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border border-white/10"
               >
-                <MessageCircle className="w-4.5 h-4.5 fill-white" />
-                Demander sur WhatsApp
+                <MessageCircle className="w-5 h-5 fill-white text-white" />
+                <span>Commander sur WhatsApp</span>
               </button>
 
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenStudio();
-                }}
-                className="w-full py-2.5 rounded-full border border-white/15 text-gray-300 hover:text-white font-medium text-xs transition hover:bg-white/5 flex items-center justify-center gap-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                Personnaliser davantage dans le studio
-              </button>
+              {onOpenStudio && (
+                <button
+                  onClick={() => {
+                    onClose();
+                    onOpenStudio();
+                  }}
+                  className="w-full py-2.5 rounded-full border border-white/15 text-gray-300 hover:text-white font-medium text-xs transition hover:bg-white/5 flex items-center justify-center gap-1.5"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  Personnaliser davantage dans le studio
+                </button>
+              )}
             </div>
 
           </div>

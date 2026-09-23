@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { X, Search, ArrowRight, ShoppingBag } from 'lucide-react';
+import { X, Search, ArrowRight } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 
-export default function SearchModal({ isOpen, onClose, onProductClick, onAddToCart }) {
+export default function SearchModal({ isOpen, onClose, onProductClick }) {
   const [query, setQuery] = useState('');
 
   if (!isOpen) return null;
@@ -12,11 +12,6 @@ export default function SearchModal({ isOpen, onClose, onProductClick, onAddToCa
     p.subtitle.toLowerCase().includes(query.toLowerCase()) ||
     p.category.toLowerCase().includes(query.toLowerCase()) ||
     p.material.toLowerCase().includes(query.toLowerCase())
-  );
-
-  const filteredCategories = CATEGORIES.filter(c =>
-    c.title.toLowerCase().includes(query.toLowerCase()) ||
-    c.description.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -73,15 +68,13 @@ export default function SearchModal({ isOpen, onClose, onProductClick, onAddToCa
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
+                    onClick={() => {
+                      onClose();
+                      onProductClick(product);
+                    }}
                     className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 flex items-center justify-between transition cursor-pointer group"
                   >
-                    <div 
-                      className="flex items-center gap-3 flex-1"
-                      onClick={() => {
-                        onClose();
-                        onProductClick(product);
-                      }}
-                    >
+                    <div className="flex items-center gap-3 flex-1">
                       <img src={product.image} alt={product.title} className="w-12 h-12 rounded-lg object-cover" />
                       <div>
                         <h4 className="text-sm font-bold text-white group-hover:text-blue-400 transition">{product.title}</h4>
@@ -89,16 +82,9 @@ export default function SearchModal({ isOpen, onClose, onProductClick, onAddToCa
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => {
-                        onAddToCart(product);
-                        onClose();
-                      }}
-                      className="p-2 rounded-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white transition"
-                      title="Ajouter au panier"
-                    >
-                      <ShoppingBag className="w-4 h-4" />
-                    </button>
+                    <div className="p-2 rounded-full text-gray-400 group-hover:text-blue-400 transition">
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
                   </div>
                 ))}
               </div>

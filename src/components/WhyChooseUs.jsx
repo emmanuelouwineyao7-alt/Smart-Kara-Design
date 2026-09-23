@@ -102,7 +102,7 @@ export default function WhyChooseUs({ onOpenQuote }) {
             <div>
               <button
                 onClick={onOpenQuote}
-                className="w-full py-3 px-5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-blue-600/30 flex items-center justify-center gap-2"
+                className="w-full py-3 px-5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-blue-600/30 flex items-center justify-center gap-2 cursor-pointer"
               >
                 Nous contacter
                 <ArrowRight className="w-4 h-4" />
@@ -113,17 +113,17 @@ export default function WhyChooseUs({ onOpenQuote }) {
             <div className="pt-3 border-t border-white/10 space-y-2.5 text-xs text-gray-300">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <a href="tel:+22893456789" className="hover:text-white transition">+228 93 45 67 89</a>
+                <a href="tel:+22879800487" className="hover:text-white transition">+228 79 80 04 87</a>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <a href="mailto:contact@smartkara-design.com" className="hover:text-white transition break-all">contact@smartkara-design.com</a>
+                <a href="mailto:smartdesignkara88@gmail.com" className="hover:text-white transition break-all">smartdesignkara88@gmail.com</a>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span>Lomé, Togo</span>
+                <span>Kara, Togo</span>
               </div>
             </div>
 

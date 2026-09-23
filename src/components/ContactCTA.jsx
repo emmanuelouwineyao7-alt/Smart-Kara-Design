@@ -30,7 +30,7 @@ export default function ContactCTA({ onOpenQuote }) {
             <div className="pt-2">
               <button
                 onClick={onOpenQuote}
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-600/30 transform hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-600/30 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 Nous contacter
                 <ArrowRight className="w-4 h-4" />
@@ -54,8 +54,8 @@ export default function ContactCTA({ onOpenQuote }) {
                 </div>
                 <div>
                   <span className="text-[11px] text-gray-500 block uppercase font-semibold">Téléphone / WhatsApp</span>
-                  <a href="tel:+22893456789" className="text-white hover:text-[#0066FF] font-semibold transition">
-                    +228 93 45 67 89
+                  <a href="tel:+22879800487" className="text-white hover:text-[#0066FF] font-semibold transition">
+                    +228 79 80 04 87
                   </a>
                 </div>
               </div>
@@ -66,8 +66,8 @@ export default function ContactCTA({ onOpenQuote }) {
                 </div>
                 <div>
                   <span className="text-[11px] text-gray-500 block uppercase font-semibold">Email direct</span>
-                  <a href="mailto:contact@smartkara-design.com" className="text-white hover:text-[#0066FF] font-semibold transition break-all">
-                    contact@smartkara-design.com
+                  <a href="mailto:smartdesignkara88@gmail.com" className="text-white hover:text-[#0066FF] font-semibold transition break-all">
+                    smartdesignkara88@gmail.com
                   </a>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default function ContactCTA({ onOpenQuote }) {
                 <div>
                   <span className="text-[11px] text-gray-500 block uppercase font-semibold">Localisation</span>
                   <span className="text-white font-semibold">
-                    Lomé, Togo
+                    Kara, Togo
                   </span>
                 </div>
               </div>

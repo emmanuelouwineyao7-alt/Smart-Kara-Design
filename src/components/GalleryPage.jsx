@@ -69,14 +69,14 @@ export default function GalleryPage({
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-white pt-6 pb-24">
+    <div className="min-h-screen bg-[#0B0F19] text-white pt-6 pb-24 animate-fadeIn">
       
       {/* Breadcrumb & Quick Back Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="flex items-center justify-between">
           <button
             onClick={onBackToHome}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-blue-400 transition group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 hover:text-[#0066FF] transition group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Retour à l'accueil</span>
@@ -85,51 +85,48 @@ export default function GalleryPage({
           <div className="text-xs text-gray-500 hidden sm:block">
             <span>Accueil</span>
             <span className="mx-2 text-gray-600">/</span>
-            <span className="text-blue-400 font-medium">Galerie de créations</span>
+            <span className="text-[#0066FF] font-medium">Galerie de créations</span>
           </div>
         </div>
       </div>
 
-      {/* Hero Header Section */}
+      {/* 1. Section de Présentation Galerie sur Fond Blanc */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-950/50 via-[#111827] to-[#0B0F19] border border-white/10 p-8 sm:p-12 shadow-2xl">
-          {/* Subtle background glow effect */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+        <div className="relative overflow-hidden rounded-3xl bg-white text-gray-900 border border-gray-200 p-8 sm:p-12 shadow-xl">
+          
           <div className="relative z-10 max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF] text-xs font-bold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
               Savoir-Faire & Réalisations d'Atelier
             </span>
 
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
               Galerie de nos <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">
+              <span className="text-[#0066FF]">
                 Créations & Projets Sur-Mesure
               </span>
             </h1>
 
-            <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed">
+            <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
               Découvrez la précision de notre atelier à Kara, Togo. Du travail fin du bois noble d’Iroko à la gravure laser sur plexiglas et l'impression 3D, chaque objet est fabriqué avec passion et précision.
             </p>
 
-            {/* Quick atelier badge list */}
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs sm:text-sm font-medium text-gray-300">
-              <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
+            {/* Quick atelier badge list sur fond clair */}
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs sm:text-sm font-medium text-gray-700">
+              <div className="flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-[#0066FF]" />
                 <span>Atelier à Kara, Togo</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+              <div className="flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-[#0066FF]" />
                 <span>Précision Laser 0.01mm</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <div className="flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 <span>Bois noble & Acrylique LED</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
-                <CheckCircle2 className="w-4 h-4 text-amber-400" />
+              <div className="flex items-center gap-1.5 bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-amber-600" />
                 <span>Pièce unique & Petite série</span>
               </div>
             </div>
@@ -137,7 +134,7 @@ export default function GalleryPage({
         </div>
       </section>
 
-      {/* Filter and Search Bar Section */}
+      {/* 2. Barre de Recherche et Sélection des Catégories */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <div className="space-y-4">
           
@@ -150,7 +147,7 @@ export default function GalleryPage({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Rechercher par mot-clé, matière, nom..."
-                className="w-full bg-[#111827] border border-white/10 rounded-full pl-10 pr-10 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
+                className="w-full bg-gray-900 border border-white/15 rounded-full pl-10 pr-10 py-2.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#0066FF] transition shadow-sm font-medium"
               />
               {searchQuery && (
                 <button
@@ -163,7 +160,7 @@ export default function GalleryPage({
             </div>
 
             <div className="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-blue-400" />
+              <Layers className="w-4 h-4 text-[#0066FF]" />
               <span>
                 <strong className="text-white">{filteredItems.length}</strong> réalisation{filteredItems.length > 1 ? 's' : ''} trouvée{filteredItems.length > 1 ? 's' : ''}
               </span>
@@ -182,10 +179,10 @@ export default function GalleryPage({
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shrink-0 flex items-center gap-2 ${
+                  className={`whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shrink-0 flex items-center gap-2 cursor-pointer ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                      : 'bg-[#111827] text-gray-400 hover:text-white hover:bg-white/5 border border-white/10'
+                      ? 'bg-[#0066FF] text-white shadow-lg shadow-blue-600/30'
+                      : 'bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 border border-white/10'
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -202,7 +199,7 @@ export default function GalleryPage({
         </div>
       </section>
 
-      {/* Gallery Cards Grid */}
+      {/* 3. Grille des Cartes de la Galerie */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         {filteredItems.length === 0 ? (
           <div className="text-center py-20 bg-[#111827]/40 rounded-3xl border border-white/5 p-8">
@@ -216,7 +213,7 @@ export default function GalleryPage({
                 setSelectedCategory('all');
                 setSearchQuery('');
               }}
-              className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition"
+              className="px-6 py-2.5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white text-xs font-bold transition shadow-lg"
             >
               Réinitialiser les filtres
             </button>
@@ -256,7 +253,7 @@ export default function GalleryPage({
                 {/* Content Details */}
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <span className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider block">
+                    <span className="text-[11px] font-semibold text-[#0066FF] uppercase tracking-wider block">
                       {item.category}
                     </span>
                     <h3 className="text-base font-bold text-white mt-1 group-hover:text-blue-300 transition-colors line-clamp-1">
@@ -277,7 +274,7 @@ export default function GalleryPage({
                     {item.priceEstimate && (
                       <div className="text-[11px] text-gray-400 flex items-center justify-between">
                         <span>Estimation :</span>
-                        <span className="text-blue-400 font-bold">{item.priceEstimate}</span>
+                        <span className="text-[#0066FF] font-bold">{item.priceEstimate}</span>
                       </div>
                     )}
                   </div>
@@ -286,7 +283,7 @@ export default function GalleryPage({
                   <div className="pt-2 flex items-center gap-2">
                     <button
                       onClick={(e) => handleWhatsAppItem(item, e)}
-                      className="flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-1.5"
+                      className="flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
                       title="Commander sur WhatsApp"
                     >
                       <MessageCircle className="w-3.5 h-3.5 fill-white shrink-0" />
@@ -295,7 +292,7 @@ export default function GalleryPage({
 
                     <button
                       onClick={() => setActiveLightboxIndex(index)}
-                      className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition border border-white/10"
+                      className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition border border-white/10 cursor-pointer"
                       title="Voir en grand"
                     >
                       <Maximize2 className="w-4 h-4" />
@@ -309,27 +306,27 @@ export default function GalleryPage({
         )}
       </section>
 
-      {/* Bottom Call To Action Banner */}
+      {/* 4. Banner CTA sur Fond Blanc (Section Suivant la Galerie) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-900/60 via-slate-900 to-indigo-950/80 border border-white/10 p-8 sm:p-12 text-center shadow-2xl">
+        <div className="relative overflow-hidden rounded-3xl bg-white border border-gray-200 p-8 sm:p-12 text-center shadow-xl text-gray-900">
           <div className="max-w-2xl mx-auto space-y-5">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-[#0066FF] border border-blue-200 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               Projet Personnalisé sur-mesure
             </span>
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
               Vous avez une idée unique ou une commande spéciale ?
             </h2>
 
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
               Nous fabriquons à la commande dans notre atelier à Kara : trophées, signalétique d'entreprise, cadeaux d'anniversaire ou décors muraux selon vos croquis et dimensions.
             </p>
 
             <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
               <button
                 onClick={onOpenStudio}
-                className="px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center gap-2 hover:scale-105"
+                className="px-7 py-3.5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center gap-2 hover:scale-105 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
                 Ouvrir le Studio 3D
@@ -337,7 +334,7 @@ export default function GalleryPage({
 
               <button
                 onClick={handleWhatsAppGeneral}
-                className="px-7 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-600/30 flex items-center gap-2 hover:scale-105"
+                className="px-7 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-600/30 flex items-center gap-2 hover:scale-105 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 Discuter sur WhatsApp
@@ -345,9 +342,9 @@ export default function GalleryPage({
 
               <button
                 onClick={onOpenQuote}
-                className="px-6 py-3.5 rounded-full border border-white/20 hover:border-white/40 text-gray-200 hover:text-white font-semibold text-sm transition-all hover:bg-white/5 flex items-center gap-2"
+                className="px-6 py-3.5 rounded-full border border-gray-300 hover:border-gray-400 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
               >
-                <FileText className="w-4 h-4 text-gray-300" />
+                <FileText className="w-4 h-4 text-gray-600" />
                 Demander un devis
               </button>
             </div>

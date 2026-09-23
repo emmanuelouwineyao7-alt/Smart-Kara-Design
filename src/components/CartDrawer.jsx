@@ -4,7 +4,8 @@ import { X, Trash2, Plus, Minus, MessageSquare, ShoppingBag, ArrowRight } from '
 export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onClearCart }) {
   const [currencyToggle, setCurrencyToggle] = useState('FCFA');
   const [customerName, setCustomerName] = useState('');
-  const [customerAddress, setCustomerAddress] = useState('Lomé, Togo');
+  const [customerAddress, setCustomerAddress] = useState('Kara, Togo');
+  const whatsappNumber = "22879800487";
 
   if (!isOpen) return null;
 
@@ -29,10 +30,10 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
     });
 
     text += `*TOTAL COMMANDE :* ${totalFCFA.toLocaleString('fr-FR')} FCFA (~${totalEUR} €)\n\n`;
-    text += `Merci de me confirmer la disponibilité et le délai de réalisation à Lomé !`;
+    text += `Merci de me confirmer la disponibilité et le délai de réalisation !`;
 
     const encodedText = encodeURIComponent(text);
-    const whatsappUrl = `https://wa.me/22893456789?text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -43,9 +44,9 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
         {/* Header */}
         <div className="p-5 border-b border-white/10 flex items-center justify-between bg-[#0B0F19]">
           <div className="flex items-center gap-2">
-            <ShoppingBag className="w-5 h-5 text-blue-400" />
+            <ShoppingBag className="w-5 h-5 text-emerald-400" />
             <h3 className="font-bold text-lg text-white">Mon Panier SKD</h3>
-            <span className="bg-blue-600/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full border border-blue-500/30">
+            <span className="bg-emerald-600/30 text-emerald-400 text-xs font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">
               {cartItems.reduce((sum, i) => sum + i.quantity, 0)} articles
             </span>
           </div>
@@ -81,13 +82,13 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                   <p className="text-[11px] text-gray-400 truncate">{item.subtitle}</p>
                   
                   {item.customText && (
-                    <span className="inline-block mt-1 text-[10px] bg-blue-900/60 text-blue-200 px-2 py-0.5 rounded border border-blue-700/50">
+                    <span className="inline-block mt-1 text-[10px] bg-emerald-900/60 text-emerald-200 px-2 py-0.5 rounded border border-emerald-700/50">
                       Gravé: "{item.customText}"
                     </span>
                   )}
 
                   <div className="flex items-center justify-between mt-2">
-                    <span className="font-extrabold text-blue-400 text-xs sm:text-sm">
+                    <span className="font-extrabold text-emerald-400 text-xs sm:text-sm">
                       {(item.price * item.quantity).toLocaleString('fr-FR')} FCFA
                     </span>
 
@@ -133,14 +134,14 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 placeholder="Votre Nom & Prénom"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                className="w-full bg-[#1E293B] border border-white/15 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#1E293B] border border-white/15 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-500"
               />
               <input
                 type="text"
                 placeholder="Ville / Quartier (Ex: Lomé, Togo)"
                 value={customerAddress}
                 onChange={(e) => setCustomerAddress(e.target.value)}
-                className="w-full bg-[#1E293B] border border-white/15 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#1E293B] border border-white/15 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-500"
               />
             </div>
 
@@ -151,7 +152,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 <span className="text-xs text-gray-500">Livraison à définir avec l'atelier</span>
               </div>
               <div className="text-right">
-                <span className="text-xl font-extrabold text-blue-400 block">
+                <span className="text-xl font-extrabold text-emerald-400 block">
                   {totalFCFA.toLocaleString('fr-FR')} FCFA
                 </span>
                 <span className="text-[10px] text-gray-400 font-medium">
@@ -163,10 +164,10 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
             {/* WhatsApp Checkout Button */}
             <button
               onClick={handleWhatsAppCheckout}
-              className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f7a6e] text-white font-bold text-sm transition-all duration-300 shadow-xl shadow-[#25D366]/30 hover:shadow-[#25D366]/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer border border-white/10"
             >
-              <MessageSquare className="w-4 h-4 fill-white" />
-              Commander sur WhatsApp
+              <MessageSquare className="w-4.5 h-4.5 fill-white text-white" />
+              <span>Commander sur WhatsApp</span>
             </button>
           </div>
         )}

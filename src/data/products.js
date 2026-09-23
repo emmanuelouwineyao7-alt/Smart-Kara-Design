@@ -3,7 +3,7 @@ export const PRODUCTS = [
     id: 1,
     title: "Support téléphone en bois",
     subtitle: "Avec prénom personnalisé",
-    price: 5000,
+    price: 4000,
     currency: "FCFA",
     category: "Supports & Organisateurs",
     categoryId: "supports-organisateurs",
@@ -12,13 +12,14 @@ export const PRODUCTS = [
     leadTime: "24h à 48h",
     description: "Support ergonomique en bois noble avec monoplaque et gravure laser personnalisée d'une initiale géante et prénom.",
     defaultCustomText: "Brandon",
-    image: "/images/brandon-stand.jpg"
+    image: "/images/brandon-stand.jpg",
+    badge: "Bestseller"
   },
   {
     id: 2,
     title: "Porte-lunettes en bois",
     subtitle: "Design élégant et pratique",
-    price: 6000,
+    price: 5000,
     currency: "FCFA",
     category: "Porte-lunettes & Accessoires",
     categoryId: "porte-lunettes",
@@ -27,13 +28,14 @@ export const PRODUCTS = [
     leadTime: "24h",
     description: "Présentoir ergonomique en bois pour lunettes de vue et de soleil. Évite les rayures et décore élégamment votre bureau.",
     defaultCustomText: "SKD Studio",
-    image: "/images/glasses-stand.jpg"
+    image: "/images/glasses-stand.jpg",
+    badge: "Exclusif"
   },
   {
     id: 3,
     title: "Support téléphone en acrylique",
     subtitle: "Moderne et personnalisable",
-    price: 4000,
+    price: 3000,
     currency: "FCFA",
     category: "Acrylique / Plexiglas",
     categoryId: "acrylique-plexi",
@@ -42,13 +44,14 @@ export const PRODUCTS = [
     leadTime: "24h",
     description: "Support translucide haut de gamme gravé au laser de lignes géométriques et du prénom de votre choix.",
     defaultCustomText: "Sarah Mitchell",
-    image: "/images/sarah-acrylic-stand.jpg"
+    image: "/images/sarah-acrylic-stand.jpg",
+    badge: "Tendance"
   },
   {
     id: 4,
     title: "Porte-cartes de visite",
     subtitle: "Bois naturel et gravure logo",
-    price: 4000,
+    price: 3500,
     currency: "FCFA",
     category: "Porte-cartes & Bureau",
     categoryId: "porte-cartes-bureau",
@@ -57,13 +60,14 @@ export const PRODUCTS = [
     leadTime: "24h",
     description: "Présentoir de bureau épuré pour cartes de visite professionnelles avec biseau d'exposition et gravure de logo entreprise.",
     defaultCustomText: "SKD Pro",
-    image: "/images/slot-stand.jpg"
+    image: "/images/slot-stand.jpg",
+    badge: "B2B"
   },
   {
     id: 5,
     title: "Support téléphone + porte-stylo",
     subtitle: "Idéal pour votre bureau",
-    price: 8000,
+    price: 7500,
     currency: "FCFA",
     category: "Supports & Organisateurs",
     categoryId: "supports-organisateurs",
@@ -72,7 +76,88 @@ export const PRODUCTS = [
     leadTime: "24h à 48h",
     description: "Combiné 2-en-1 support smartphone ergonomique et pot à stylos spacieux. Personnalisation laser sur la face avant.",
     defaultCustomText: "Sarah Mitchell",
-    image: "/images/phone-pen-stand.jpg"
+    image: "/images/phone-pen-stand.jpg",
+    badge: "Premium"
+  },
+  {
+    id: 6,
+    title: "Trophée Acrylique LED & Bois",
+    subtitle: "Distinction d'honneur sur-mesure",
+    price: 25000,
+    currency: "FCFA",
+    category: "Acrylique / Plexiglas",
+    categoryId: "acrylique-plexi",
+    material: "Plexiglas 8mm & Socle chêne à LED",
+    dimensions: "22 x 16 x 4.5 cm",
+    leadTime: "24h à 48h",
+    description: "Plaque commémorative et trophée corporate avec gravure optique laser. Socle bois à éclairage LED doux.",
+    defaultCustomText: "Prix d'Excellence 2026",
+    image: "/images/acrylic-led-trophy.jpg",
+    badge: "Lumière LED"
+  },
+  {
+    id: 7,
+    title: "Tableau Mandala Multicouche",
+    subtitle: "Art mural en relief 8 couches",
+    price: 30000,
+    currency: "FCFA",
+    category: "Décoration",
+    categoryId: "decoration",
+    material: "Contreplaqué de bouleau & teintes ébénisterie",
+    dimensions: "60 x 60 x 2.4 cm",
+    leadTime: "48h à 72h",
+    description: "Œuvre murale tridimensionnelle conçue par superposition de 8 couches découpées avec précision au laser.",
+    defaultCustomText: "Mandala Kara",
+    image: "/images/wall-art-mandala.jpg",
+    badge: "Artisanat d'Art"
+  },
+  {
+    id: 8,
+    title: "Organisateur Honeycomb 3D",
+    subtitle: "Design alvéolaire futuriste",
+    price: 9500,
+    currency: "FCFA",
+    category: "Supports & Organisateurs",
+    categoryId: "supports-organisateurs",
+    material: "Polymère PLA+ renforcé",
+    dimensions: "20 x 14 x 9 cm",
+    leadTime: "24h",
+    description: "Accessoire de travail moderne imprimé en 3D avec compartiments stylos, téléphone et accessoires.",
+    defaultCustomText: "SKD Tech",
+    image: "/images/3d-desk-organizer.jpg",
+    badge: "Impression 3D"
+  },
+  {
+    id: 9,
+    title: "Support Smartphone Motif Floral",
+    subtitle: "Gravure délicate au laser",
+    price: 3500,
+    currency: "FCFA",
+    category: "Objets Personnalisés",
+    categoryId: "objets-personnalises",
+    material: "Bois clair naturel poncé fin",
+    dimensions: "15 x 8.5 x 1.2 cm",
+    leadTime: "24h",
+    description: "Illustration florale gravée au micro-laser avec prénom personnalisé au centre.",
+    defaultCustomText: "Élodie",
+    image: "/images/floral-stands.jpg",
+    badge: "Cadeau"
+  },
+  {
+    id: 10,
+    title: "Plaque Enseigne Professionnelle",
+    subtitle: "Signalétique & Logo gravé",
+    price: 20000,
+    currency: "FCFA",
+    category: "Enseignes & Signalétique",
+    categoryId: "enseignes-signaletique",
+    material: "Acrylique métallisé ou bois noble",
+    dimensions: "30 x 20 x 0.8 cm",
+    leadTime: "48h",
+    description: "Plaque pour cabinets, entreprises et commerces avec découpe et gravure laser haute précision.",
+    defaultCustomText: "Cabinet SKD",
+    image: "/images/acrylic-led-trophy.jpg",
+    badge: "Entreprises"
   }
 ];
 

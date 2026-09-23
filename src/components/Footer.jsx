@@ -65,12 +65,7 @@ export default function Footer({ onOpenStudio, onNavigate }) {
               >
                 Nos produits
               </a>
-              <button 
-                onClick={onOpenStudio} 
-                className="hover:text-[#0066FF] transition"
-              >
-                Personnalisation
-              </button>
+
               <a 
                 href="#galerie" 
                 onClick={(e) => {

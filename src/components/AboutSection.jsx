@@ -27,7 +27,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="a-propos" className="bg-[#050A10] border-t border-white/10">
+    <section id="a-propos" className="bg-white border-t border-gray-100 text-gray-900">
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
           

@@ -14,12 +14,12 @@ export default function StudioCustomizerModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const productBases = [
-    { id: 'support-tel', name: 'Support Téléphone', basePrice: 4000 },
-    { id: 'porte-lunettes', name: 'Porte-lunettes', basePrice: 5000 },
-    { id: 'plaque-acrylique', name: 'Plaque Acrylique Gravée', basePrice: 4500 },
-    { id: 'porte-cartes', name: 'Porte-cartes de Visite', basePrice: 3500 },
-    { id: 'organiseur-bureau', name: 'Organiseur Bureau & Stylos', basePrice: 7000 },
-    { id: 'enseigne-bureau', name: 'Plaque de Bureau Nom/Fonction', basePrice: 6000 },
+    { id: 'support-tel', name: 'Support Téléphone', basePrice: 3000 },
+    { id: 'porte-lunettes', name: 'Porte-lunettes', basePrice: 4500 },
+    { id: 'plaque-acrylique', name: 'Plaque Acrylique Gravée', basePrice: 3500 },
+    { id: 'porte-cartes', name: 'Porte-cartes de Visite', basePrice: 3000 },
+    { id: 'organiseur-bureau', name: 'Organiseur Bureau & Stylos', basePrice: 6500 },
+    { id: 'enseigne-bureau', name: 'Plaque de Bureau Nom/Fonction', basePrice: 5000 },
   ];
 
   const materials = [
@@ -27,6 +27,7 @@ export default function StudioCustomizerModal({ isOpen, onClose }) {
     { id: 'contrepaque', name: 'Contreplaqué de Bouleau 5mm', priceMultiplier: 1.0, color: '#D2B48C', texture: 'plywood' },
     { id: 'plexiglas-transp', name: 'Plexiglas Acrylique Translucide 5mm', priceMultiplier: 1.3, color: '#E0F7FA', texture: 'acrylic' },
     { id: 'plexiglas-noir', name: 'Plexiglas Acrylique Noir Néon 5mm', priceMultiplier: 1.4, color: '#1A1A1A', texture: 'acrylic-dark' },
+    { id: 'impression-3d', name: 'Impression 3D (PLA+ / Résine Haute Définition)', priceMultiplier: 1.25, color: '#0066FF', texture: '3d-print' },
     { id: 'pvc-forex', name: 'PVC Forex Blanc Haute Densité', priceMultiplier: 0.9, color: '#F5F5F5', texture: 'pvc' },
   ];
 
@@ -208,10 +209,14 @@ export default function StudioCustomizerModal({ isOpen, onClose }) {
                     : selectedMat.texture === 'plywood' ? '#C29B72' 
                     : selectedMat.texture === 'acrylic-dark' ? '#111827'
                     : selectedMat.texture === 'acrylic' ? '#0F2B48' 
+                    : selectedMat.texture === '3d-print' ? '#071830'
                     : '#2A3447',
-                  backgroundImage: selectedMat.texture.includes('wood') || selectedMat.texture.includes('plywood')
+                  backgroundImage: selectedMat.texture === '3d-print'
+                    ? 'radial-gradient(#0066FF 1px, transparent 1px)'
+                    : selectedMat.texture.includes('wood') || selectedMat.texture.includes('plywood')
                     ? 'radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px)'
-                    : 'none'
+                    : 'none',
+                  backgroundSize: selectedMat.texture === '3d-print' ? '12px 12px' : 'auto'
                 }}
               >
                 {/* Simulated Product Plate */}
@@ -261,10 +266,10 @@ export default function StudioCustomizerModal({ isOpen, onClose }) {
 
               <button
                 onClick={handleWhatsAppSend}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full font-bold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 transition flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f7a6e] text-white shadow-xl shadow-[#25D366]/30 hover:shadow-[#25D366]/40 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border border-white/10"
               >
-                <MessageCircle className="w-5 h-5 fill-white" />
-                Envoyer sur WhatsApp
+                <MessageCircle className="w-5 h-5 fill-white text-white" />
+                <span>Envoyer sur WhatsApp</span>
               </button>
             </div>
 

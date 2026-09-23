@@ -20,7 +20,7 @@ export const GALLERY_ITEMS = [
     image: '/images/wall-art-mandala.jpg',
     description: "Œuvre murale tridimensionnelle conçue par superposition de 8 couches découpées avec une tolérance de 0.01 mm au laser CO2 dans notre atelier à Kara. Assemblage et cirage artisanal à la main.",
     features: ['Découpe laser 0.01mm', '8 couches superposées', 'Accroche murale intégrée', 'Bois certifié durable'],
-    priceEstimate: '35 000 FCFA'
+    priceEstimate: '30 000 FCFA'
   },
   {
     id: 'gal-2',
@@ -34,7 +34,7 @@ export const GALLERY_ITEMS = [
     image: '/images/acrylic-led-trophy.jpg',
     description: "Plaque commémorative et trophée corporate avec gravure optique laser inversée. Le socle en bois noble diffuse une lumière LED douce qui sublime les inscriptions et logos vectoriels.",
     features: ['Gravure optique haute netteté', 'Éclairage LED basse consommation', 'Alimentation USB / batterie', 'Personnalisation texte et logo'],
-    priceEstimate: '18 000 FCFA'
+    priceEstimate: '25 000 FCFA'
   },
   {
     id: 'gal-3',
@@ -48,7 +48,7 @@ export const GALLERY_ITEMS = [
     image: '/images/3d-desk-organizer.jpg',
     description: "Accessoire de travail moderne inspiré de structures alvéolaires biomorphiques. Compartiments optimisés pour stylos de précision, téléphones, cutters, carnets et accessoires de bureau.",
     features: ['Structure nid d’abeille robuste', 'Bi-matière haute rigidité', 'Finition satinée anti-traces', 'Design exclusif SKD'],
-    priceEstimate: '12 000 FCFA'
+    priceEstimate: '9 500 FCFA'
   },
   {
     id: 'gal-4',
@@ -62,7 +62,7 @@ export const GALLERY_ITEMS = [
     image: '/images/brandon-stand.jpg',
     description: "Support ergonomique avec découpe d'initiale monumentale personnalisable et gravure du prénom au laser haute cadence. Rainure d'accueil avec passage de câble de recharge intégré.",
     features: ['Initiale ajourée au choix', 'Gravure prénom nette', 'Stabilité tout smartphone / tablette', 'Protection cire d’abeille'],
-    priceEstimate: '5 000 FCFA'
+    priceEstimate: '4 000 FCFA'
   },
   {
     id: 'gal-5',
@@ -76,7 +76,7 @@ export const GALLERY_ITEMS = [
     image: '/images/sarah-acrylic-stand.jpg',
     description: "Design contemporain épuré aux lignes géométriques gravées. La transparence cristalline du plexiglas s’intègre dans tous les environnements de travail contemporains.",
     features: ['Acrylique grade optique', 'Gravure géométrique moderne', 'Bords polis à la flamme', 'Résistant aux UV'],
-    priceEstimate: '4 000 FCFA'
+    priceEstimate: '3 000 FCFA'
   },
   {
     id: 'gal-6',
@@ -90,7 +90,7 @@ export const GALLERY_ITEMS = [
     image: '/images/glasses-stand.jpg',
     description: "Présentoir astucieux pour lunettes de vue et solaires. Évite l'usure des verres, offre un rangement immédiat et habille avec caractère une table de chevet ou console d’entrée.",
     features: ['Forme sculptée protectrice', 'Compatible tout type de monture', 'Bois local noble', 'Gravure monogramme discrète'],
-    priceEstimate: '6 000 FCFA'
+    priceEstimate: '5 000 FCFA'
   },
   {
     id: 'gal-7',
@@ -104,7 +104,7 @@ export const GALLERY_ITEMS = [
     image: '/images/floral-stands.jpg',
     description: "Illustration florale détaillée gravée avec des nuances de brûlage naturel et prénom personnalisé. Un objet délicat et chaleureux, plébiscité pour les cadeaux d'anniversaire et fêtes.",
     features: ['Détails floraux ultra-fins', 'Prénom au choix', 'Texture bois soyeuse', 'Léger et transportable'],
-    priceEstimate: '4 500 FCFA'
+    priceEstimate: '3 500 FCFA'
   },
   {
     id: 'gal-8',
@@ -118,6 +118,6 @@ export const GALLERY_ITEMS = [
     image: '/images/slot-stand.jpg',
     description: "Montage ingénieux par emboîtement sans vis ni colle. Se démonte à plat en 2 secondes pour être glissé dans une sacoche d'ordinateur ou un sac de voyage.",
     features: ['Assemblage sans outil', 'Rangement ultra-plat', 'Angle de vision optimal 65°', 'Gravure logo ou texte'],
-    priceEstimate: '4 000 FCFA'
+    priceEstimate: '3 500 FCFA'
   }
 ];
