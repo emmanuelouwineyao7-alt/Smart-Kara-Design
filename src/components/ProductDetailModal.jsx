@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Sparkles, Clock, ShieldCheck, Ruler, MessageCircle } from 'lucide-react';
+import { sanitizeInput, safeOpenWindow } from '../utils/security';
 
 export default function ProductDetailModal({ product, isOpen, onClose, onOpenStudio }) {
   const [customInput, setCustomInput] = useState(product?.defaultCustomText || 'Mon Prénom');
@@ -8,8 +9,9 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
   if (!isOpen || !product) return null;
 
   const handleWhatsAppInquiry = () => {
-    const text = encodeURIComponent(`Bonjour SMART KARA DESIGN, je souhaite commander le produit "${product.title}" (${product.price.toLocaleString('fr-FR')} FCFA). Texte/Gravure souhaité: "${customInput}".`);
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    const cleanText = sanitizeInput(customInput);
+    const text = encodeURIComponent(`Bonjour SMART KARA DESIGN, je souhaite commander le produit "${product.title}". Texte/Gravure souhaité: "${cleanText}".`);
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (
@@ -38,10 +40,6 @@ export default function ProductDetailModal({ product, isOpen, onClose, onOpenStu
             <div>
               <h3 className="text-xl font-bold text-white leading-tight">{product.title}</h3>
               <p className="text-xs text-emerald-400 mt-1 font-semibold">{product.subtitle}</p>
-
-              <div className="mt-4 text-2xl font-extrabold text-emerald-400">
-                {product.price.toLocaleString('fr-FR')} FCFA
-              </div>
 
               <p className="text-xs text-gray-300 mt-3 leading-relaxed">
                 {product.description}

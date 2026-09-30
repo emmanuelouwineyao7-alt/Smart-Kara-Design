@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, MessageCircle, Sparkles, Clock, Ruler, Layers, Check } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
 export default function GalleryLightbox({
   item,
   onClose,
   onNext,
-  onPrev,
-  onOpenStudio
+  onPrev
 }) {
   const whatsappNumber = "22879800487";
 
@@ -26,7 +26,7 @@ export default function GalleryLightbox({
     const text = encodeURIComponent(
       `Bonjour SMART KARA DESIGN, j'ai vu votre réalisation "${item.title}" dans la galerie et je souhaite commander un modèle similaire ou obtenir un devis personnalisé.`
     );
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (
@@ -147,14 +147,8 @@ export default function GalleryLightbox({
             )}
           </div>
 
-          {/* Pricing & Call To Action Buttons */}
+          {/* Call To Action Buttons */}
           <div className="space-y-3 pt-4 border-t border-white/10">
-            {item.priceEstimate && (
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-400">À partir de :</span>
-                <span className="text-xl font-black text-blue-400">{item.priceEstimate}</span>
-              </div>
-            )}
 
             <button
               onClick={handleWhatsAppInquiry}
@@ -163,19 +157,6 @@ export default function GalleryLightbox({
               <MessageCircle className="w-5 h-5 fill-white text-white" />
               <span>Commander sur WhatsApp</span>
             </button>
-
-            {onOpenStudio && (
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenStudio();
-                }}
-                className="w-full py-3 rounded-full border border-white/20 hover:border-blue-500/50 text-gray-200 hover:text-white hover:bg-white/5 font-semibold text-xs transition flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4 text-blue-400" />
-                Personnaliser un modèle dans le Studio
-              </button>
-            )}
           </div>
 
         </div>

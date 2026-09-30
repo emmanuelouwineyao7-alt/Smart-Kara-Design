@@ -9,8 +9,6 @@ import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import GalleryPage from './components/GalleryPage';
 import ProductsPage from './components/ProductsPage';
-import StudioCustomizerModal from './components/StudioCustomizerModal';
-import QuoteModal from './components/QuoteModal';
 import ProductDetailModal from './components/ProductDetailModal';
 import SearchModal from './components/SearchModal';
 import { PRODUCTS } from './data/products';
@@ -36,8 +34,6 @@ export default function App() {
     return 'dark';
   });
 
-  const [isStudioOpen, setIsStudioOpen] = useState(false);
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeSection, setActiveSection] = useState('accueil');
@@ -124,8 +120,6 @@ export default function App() {
 
       {/* Header Sticky */}
       <Header
-        onOpenStudio={() => setIsStudioOpen(true)}
-        onOpenQuote={() => setIsQuoteOpen(true)}
         onSearchClick={() => setIsSearchOpen(true)}
         activeSection={activeSection}
         setActiveSection={setActiveSection}
@@ -140,14 +134,11 @@ export default function App() {
         {currentPage === 'gallery' ? (
           <GalleryPage
             onBackToHome={() => navigateTo('home', 'accueil')}
-            onOpenStudio={() => setIsStudioOpen(true)}
-            onOpenQuote={() => setIsQuoteOpen(true)}
           />
         ) : currentPage === 'products' ? (
           <ProductsPage
             onBackToHome={() => navigateTo('home', 'accueil')}
             onSelectProduct={(product) => setSelectedProduct(product)}
-            onOpenStudio={() => setIsStudioOpen(true)}
           />
         ) : (
           <>
@@ -188,35 +179,21 @@ export default function App() {
             <AboutSection />
 
             {/* 6. Section Contact / CTA */}
-            <ContactCTA
-              onOpenQuote={() => setIsQuoteOpen(true)}
-            />
+            <ContactCTA />
           </>
         )}
       </main>
 
       {/* Footer */}
       <Footer
-        onOpenStudio={() => setIsStudioOpen(true)}
         onNavigate={navigateTo}
       />
 
       {/* Modals */}
-      <QuoteModal
-        isOpen={isQuoteOpen}
-        onClose={() => setIsQuoteOpen(false)}
-      />
-
-      <StudioCustomizerModal
-        isOpen={isStudioOpen}
-        onClose={() => setIsStudioOpen(false)}
-      />
-
       <ProductDetailModal
         product={selectedProduct}
         isOpen={Boolean(selectedProduct)}
         onClose={() => setSelectedProduct(null)}
-        onOpenStudio={() => setIsStudioOpen(true)}
       />
 
       <SearchModal

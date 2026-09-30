@@ -3,12 +3,13 @@ import { PRODUCTS } from '../data/products';
 import { CATEGORIES } from '../data/categories';
 import ProductCard from './ProductCard';
 import { Search, ArrowLeft, Sparkles, MessageCircle, SlidersHorizontal, Package } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
 export default function ProductsPage({ onBackToHome, onSelectProduct, onOpenStudio }) {
   const whatsappNumber = "22879800487";
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [sortBy, setSortBy] = useState('featured'); // 'featured', 'price-asc', 'price-desc', 'title'
+  const [sortBy, setSortBy] = useState('featured'); // 'featured', 'title'
 
   // Filter products by category & search query
   const filteredProducts = useMemo(() => {
@@ -29,8 +30,6 @@ export default function ProductsPage({ onBackToHome, onSelectProduct, onOpenStud
 
       return matchesCategory && matchesSearch;
     }).sort((a, b) => {
-      if (sortBy === 'price-asc') return a.price - b.price;
-      if (sortBy === 'price-desc') return b.price - a.price;
       if (sortBy === 'title') return a.title.localeCompare(b.title);
       return a.id - b.id; // default
     });
@@ -38,7 +37,7 @@ export default function ProductsPage({ onBackToHome, onSelectProduct, onOpenStud
 
   const handleGeneralWhatsAppOrder = () => {
     const text = encodeURIComponent("Bonjour SMART KARA DESIGN, je souhaite des renseignements sur vos produits ou passer une commande.");
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (
@@ -61,7 +60,7 @@ export default function ProductsPage({ onBackToHome, onSelectProduct, onOpenStud
             <a
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f7a6e] text-white text-xs font-bold transition-all shadow-md shadow-[#25D366]/20 hover:scale-105"
             >
               <MessageCircle className="w-4 h-4 fill-white text-white" />
@@ -111,8 +110,6 @@ export default function ProductsPage({ onBackToHome, onSelectProduct, onOpenStud
                 className="w-full sm:w-auto px-4 py-3 bg-gray-50 border border-gray-300 rounded-2xl text-gray-800 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#0066FF] cursor-pointer appearance-none pr-8 shadow-sm"
               >
                 <option value="featured">Tri: Populaire</option>
-                <option value="price-asc">Prix: Croissant</option>
-                <option value="price-desc">Prix: Décroissant</option>
                 <option value="title">Nom (A-Z)</option>
               </select>
               <SlidersHorizontal className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500 pointer-events-none" />

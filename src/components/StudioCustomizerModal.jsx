@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Sparkles, Layers, Sliders, Type, Check, MessageCircle } from 'lucide-react';
+import { sanitizeInput, safeOpenWindow } from '../utils/security';
 
 export default function StudioCustomizerModal({ isOpen, onClose }) {
   const [productType, setProductType] = useState('support-tel');
@@ -44,16 +45,16 @@ export default function StudioCustomizerModal({ isOpen, onClose }) {
   const calculatedPrice = Math.round((selectedBase.basePrice * selectedMat.priceMultiplier + surfaceArea * 120) / 500) * 500;
 
   const handleWhatsAppSend = () => {
+    const cleanText = sanitizeInput(customText);
     const text = encodeURIComponent(
       `*DEMANDE DE CRÉATION SUR-MESURE — SMART KARA DESIGN (Kara)*\n\n` +
       `*Type d'objet :* ${selectedBase.name}\n` +
       `*Matériau :* ${selectedMat.name}\n` +
-      `*Texte à graver :* "${customText}"\n` +
-      `*Dimensions :* ${width} x ${height} x ${thickness} cm\n` +
-      `*Estimation tarifaire :* ${calculatedPrice.toLocaleString('fr-FR')} FCFA\n\n` +
+      `*Texte à graver :* "${cleanText}"\n` +
+      `*Dimensions :* ${width} x ${height} x ${thickness} cm\n\n` +
       `Merci de me confirmer la faisabilité et les modalités de livraison à Kara / au Togo !`
     );
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (

@@ -19,8 +19,7 @@ export const GALLERY_ITEMS = [
     tag: 'Coup de Cœur Atelier',
     image: '/images/wall-art-mandala.jpg',
     description: "Œuvre murale tridimensionnelle conçue par superposition de 8 couches découpées avec une tolérance de 0.01 mm au laser CO2 dans notre atelier à Kara. Assemblage et cirage artisanal à la main.",
-    features: ['Découpe laser 0.01mm', '8 couches superposées', 'Accroche murale intégrée', 'Bois certifié durable'],
-    priceEstimate: '30 000 FCFA'
+    features: ['Découpe laser 0.01mm', '8 couches superposées', 'Accroche murale intégrée', 'Bois certifié durable']
   },
   {
     id: 'gal-2',
@@ -33,8 +32,7 @@ export const GALLERY_ITEMS = [
     tag: 'B2B & Distinction',
     image: '/images/acrylic-led-trophy.jpg',
     description: "Plaque commémorative et trophée corporate avec gravure optique laser inversée. Le socle en bois noble diffuse une lumière LED douce qui sublime les inscriptions et logos vectoriels.",
-    features: ['Gravure optique haute netteté', 'Éclairage LED basse consommation', 'Alimentation USB / batterie', 'Personnalisation texte et logo'],
-    priceEstimate: '25 000 FCFA'
+    features: ['Gravure optique haute netteté', 'Éclairage LED basse consommation', 'Alimentation USB / batterie', 'Personnalisation texte et logo']
   },
   {
     id: 'gal-3',
@@ -47,22 +45,7 @@ export const GALLERY_ITEMS = [
     tag: 'Innovation 3D',
     image: '/images/3d-desk-organizer.jpg',
     description: "Accessoire de travail moderne inspiré de structures alvéolaires biomorphiques. Compartiments optimisés pour stylos de précision, téléphones, cutters, carnets et accessoires de bureau.",
-    features: ['Structure nid d’abeille robuste', 'Bi-matière haute rigidité', 'Finition satinée anti-traces', 'Design exclusif SKD'],
-    priceEstimate: '9 500 FCFA'
-  },
-  {
-    id: 'gal-4',
-    title: 'Support Téléphone Sculpté Monogramme "Brandon"',
-    category: 'Bois & Gravure Laser',
-    categoryId: 'bois-gravure',
-    material: "Bois massif d'Iroko teinté et huilé",
-    dimensions: '15 cm x 8 cm x 1.5 cm',
-    leadTime: '24h',
-    tag: 'Bestseller',
-    image: '/images/brandon-stand.jpg',
-    description: "Support ergonomique avec découpe d'initiale monumentale personnalisable et gravure du prénom au laser haute cadence. Rainure d'accueil avec passage de câble de recharge intégré.",
-    features: ['Initiale ajourée au choix', 'Gravure prénom nette', 'Stabilité tout smartphone / tablette', 'Protection cire d’abeille'],
-    priceEstimate: '4 000 FCFA'
+    features: ['Structure nid d’abeille robuste', 'Bi-matière haute rigidité', 'Finition satinée anti-traces', 'Design exclusif SKD']
   },
   {
     id: 'gal-5',
@@ -75,8 +58,7 @@ export const GALLERY_ITEMS = [
     tag: 'Tendance Minimaliste',
     image: '/images/sarah-acrylic-stand.jpg',
     description: "Design contemporain épuré aux lignes géométriques gravées. La transparence cristalline du plexiglas s’intègre dans tous les environnements de travail contemporains.",
-    features: ['Acrylique grade optique', 'Gravure géométrique moderne', 'Bords polis à la flamme', 'Résistant aux UV'],
-    priceEstimate: '3 000 FCFA'
+    features: ['Acrylique grade optique', 'Gravure géométrique moderne', 'Bords polis à la flamme', 'Résistant aux UV']
   },
   {
     id: 'gal-6',
@@ -89,8 +71,7 @@ export const GALLERY_ITEMS = [
     tag: 'Artisanat d’Art',
     image: '/images/glasses-stand.jpg',
     description: "Présentoir astucieux pour lunettes de vue et solaires. Évite l'usure des verres, offre un rangement immédiat et habille avec caractère une table de chevet ou console d’entrée.",
-    features: ['Forme sculptée protectrice', 'Compatible tout type de monture', 'Bois local noble', 'Gravure monogramme discrète'],
-    priceEstimate: '5 000 FCFA'
+    features: ['Forme sculptée protectrice', 'Compatible tout type de monture', 'Bois local noble', 'Gravure monogramme discrète']
   },
   {
     id: 'gal-7',
@@ -103,21 +84,71 @@ export const GALLERY_ITEMS = [
     tag: 'Cadeau Idéal',
     image: '/images/floral-stands.jpg',
     description: "Illustration florale détaillée gravée avec des nuances de brûlage naturel et prénom personnalisé. Un objet délicat et chaleureux, plébiscité pour les cadeaux d'anniversaire et fêtes.",
-    features: ['Détails floraux ultra-fins', 'Prénom au choix', 'Texture bois soyeuse', 'Léger et transportable'],
-    priceEstimate: '3 500 FCFA'
+    features: ['Détails floraux ultra-fins', 'Prénom au choix', 'Texture bois soyeuse', 'Léger et transportable']
   },
   {
-    id: 'gal-8',
-    title: 'Support Téléphone Épuré 2 Pièces Emboîtables',
-    category: 'Bois & Gravure Laser',
-    categoryId: 'bois-gravure',
-    material: 'Contreplaqué haute densité teinté noyer',
-    dimensions: '16 cm x 9 cm x 1.5 cm',
+    id: 'gal-9',
+    title: 'Organisateur Hexagonal Rose Gold 3D',
+    category: 'Impression 3D',
+    categoryId: 'impression-3d',
+    material: 'Polymère PLA+ Rose Gold métallique',
+    dimensions: '16 cm x 14 cm x 12 cm',
     leadTime: '24h',
-    tag: 'Pratique & Nomade',
-    image: '/images/slot-stand.jpg',
-    description: "Montage ingénieux par emboîtement sans vis ni colle. Se démonte à plat en 2 secondes pour être glissé dans une sacoche d'ordinateur ou un sac de voyage.",
-    features: ['Assemblage sans outil', 'Rangement ultra-plat', 'Angle de vision optimal 65°', 'Gravure logo ou texte'],
-    priceEstimate: '3 500 FCFA'
+    tag: 'Nouveauté 3D',
+    image: '/images/organizer-hex-rosegold.jpg',
+    description: "Pot à stylos et marqueurs alvéolé ergonomique imprimé en 3D avec nids d'abeille hexagonaux dégradés.",
+    features: ['Impression 3D haute définition', 'Matière métallisée rose gold', 'Design ergonomique dégradé']
+  },
+  {
+    id: 'gal-10',
+    title: 'Pot à Stylos Motif Asanoha 3D',
+    category: 'Impression 3D',
+    categoryId: 'impression-3d',
+    material: 'Bioplastique PLA+ haute précision',
+    dimensions: '12 cm x 10 cm x 11 cm',
+    leadTime: '24h',
+    tag: 'Design Exclusif',
+    image: '/images/organizer-asanoha-3d.png',
+    description: "Pot de bureau artistique sculpté en 3D avec motif géométrique traditionnel nippon Asanoha en relief.",
+    features: ['Motif moucharabieh nippon', 'Bi-couleur interchangeable', 'Finition 3D soignée']
+  },
+  {
+    id: 'gal-11',
+    title: 'Station de Bureau Multifonction Bleue',
+    category: 'Supports & Organisateurs',
+    categoryId: 'supports-organisateurs',
+    material: 'Polymère haute densité bleu satiné',
+    dimensions: '22 cm x 12 cm x 11 cm',
+    leadTime: '24h',
+    tag: 'Top Bureau',
+    image: '/images/desk-station-blue.jpg',
+    description: "Station d'organisation complète avec support smartphone incliné, pot à stylos géométrique et compartiments pour petits accessoires.",
+    features: ['Support smartphone intégré', 'Pot à stylos treillis', 'Bacs à trombones et bloc-notes']
+  },
+  {
+    id: 'gal-12',
+    title: 'Pot à Stylos Alvéolé Rose Gold',
+    category: 'Impression 3D',
+    categoryId: 'impression-3d',
+    material: 'Polymère PLA+ rose métallisé',
+    dimensions: '10 cm x 10 cm x 12 cm',
+    leadTime: '24h',
+    tag: 'Tendance',
+    image: '/images/organizer-cube-pink.jpg',
+    description: "Porte-stylos cubique au design géométrique ajouré en nids d'abeille rose métallisé.",
+    features: ['Structure nid d’abeille', 'Forme cubique épurée', 'Matière durable légère']
+  },
+  {
+    id: 'gal-13',
+    title: 'Horloge Murale Lumineuse Lotus',
+    category: 'Décoration & Art Mural',
+    categoryId: 'deco-murale',
+    material: 'Bois naturel, MDF ébène & rétroéclairage LED',
+    dimensions: '40 cm x 40 cm x 3.5 cm',
+    leadTime: '48h',
+    tag: 'Éclairage LED',
+    image: '/images/wall-clock-lotus-led.jpg',
+    description: "Horloge murale artistique géométrique motif pétale de lotus avec découpe laser fine et rétroéclairage LED blanc chaud.",
+    features: ['Découpe laser lotus', 'Éclairage d’ambiance LED', 'Mécanisme d’horloge silencieux']
   }
 ];

@@ -78,7 +78,7 @@ export default function SearchModal({ isOpen, onClose, onProductClick }) {
                       <img src={product.image} alt={product.title} className="w-12 h-12 rounded-lg object-cover" />
                       <div>
                         <h4 className="text-sm font-bold text-white group-hover:text-blue-400 transition">{product.title}</h4>
-                        <p className="text-xs text-gray-400">{product.subtitle} • {product.price.toLocaleString('fr-FR')} FCFA</p>
+                        <p className="text-xs text-gray-400">{product.subtitle} • {product.category}</p>
                       </div>
                     </div>
 

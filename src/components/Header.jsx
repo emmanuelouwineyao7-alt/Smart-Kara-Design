@@ -3,9 +3,9 @@ import LogoSKD from './LogoSKD';
 import MobileMenu from './MobileMenu';
 import { Search, Menu, MessageCircle, Sun, Moon } from 'lucide-react';
 
+import { safeOpenWindow } from '../utils/security';
+
 export default function Header({ 
-  onOpenStudio, 
-  onOpenQuote, 
   onSearchClick,
   activeSection,
   setActiveSection,
@@ -26,12 +26,6 @@ export default function Header({
   ];
 
   const handleLinkClick = (link, e) => {
-    if (link.isStudio) {
-      e.preventDefault();
-      onOpenStudio && onOpenStudio();
-      return;
-    }
-
     if (link.isProducts) {
       e.preventDefault();
       if (onNavigate) {
@@ -63,7 +57,7 @@ export default function Header({
 
   const handleWhatsAppHeaderClick = () => {
     const text = encodeURIComponent("Bonjour SMART KARA DESIGN, je souhaite passer une commande.");
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (
@@ -170,8 +164,6 @@ export default function Header({
         activeSection={activeSection}
         currentPage={currentPage}
         onNavigate={onNavigate}
-        onOpenQuote={onOpenQuote}
-        onOpenStudio={onOpenStudio}
         theme={theme}
         onToggleTheme={onToggleTheme}
       />

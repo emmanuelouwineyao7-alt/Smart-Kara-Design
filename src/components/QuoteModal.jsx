@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Send, CheckCircle2, FileText, MessageCircle } from 'lucide-react';
+import { sanitizeInput, safeOpenWindow } from '../utils/security';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -24,16 +25,20 @@ export default function QuoteModal({ isOpen, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const cleanName = sanitizeInput(formData.name);
+    const cleanPhone = sanitizeInput(formData.phone);
+    const cleanDescription = sanitizeInput(formData.description);
+
     // Prepare WhatsApp text message
     const message = encodeURIComponent(
       `*Demande de Devis / Commande - SMART KARA DESIGN*\n` +
-      `• *Nom / Entreprise* : ${formData.name}\n` +
-      `• *Téléphone / WhatsApp* : ${formData.phone}\n` +
+      `• *Nom / Entreprise* : ${cleanName}\n` +
+      `• *Téléphone / WhatsApp* : ${cleanPhone}\n` +
       `• *Type de projet* : ${formData.projectType}\n` +
-      `• *Description* : ${formData.description || 'Non précisé'}`
+      `• *Description* : ${cleanDescription || 'Non précisé'}`
     );
 
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${message}`);
 
     setSubmitted(true);
     setTimeout(() => {

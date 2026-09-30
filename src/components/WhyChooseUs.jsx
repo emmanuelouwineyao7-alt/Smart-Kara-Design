@@ -1,7 +1,14 @@
 import React from 'react';
 import { Diamond, Clock, UserCheck, ShieldCheck, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
-export default function WhyChooseUs({ onOpenQuote }) {
+export default function WhyChooseUs() {
+  const whatsappNumber = "22879800487";
+  const handleWhatsAppContact = () => {
+    const text = encodeURIComponent("Bonjour SMART KARA DESIGN, je souhaite des renseignements sur un projet.");
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
+  };
+
   const values = [
     {
       title: "Qualité professionnelle",
@@ -91,20 +98,20 @@ export default function WhyChooseUs({ onOpenQuote }) {
               <h3 className="text-xl font-bold text-white">Un projet en tête ?</h3>
               <p className="text-xs text-gray-300 leading-relaxed">
                 <span 
-                  onClick={onOpenQuote}
+                  onClick={handleWhatsAppContact}
                   className="text-blue-400 font-semibold underline underline-offset-2 cursor-pointer hover:text-blue-300"
                 >
                   Contactez-nous
-                </span> dès maintenant pour un devis gratuit ou un conseil personnalisé.
+                </span> dès maintenant pour un conseil personnalisé.
               </p>
             </div>
 
             <div>
               <button
-                onClick={onOpenQuote}
+                onClick={handleWhatsAppContact}
                 className="w-full py-3 px-5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-blue-600/30 flex items-center justify-center gap-2 cursor-pointer"
               >
-                Nous contacter
+                Nous contacter sur WhatsApp
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

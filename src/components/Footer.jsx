@@ -2,7 +2,7 @@ import React from 'react';
 import LogoSKD from './LogoSKD';
 import { Facebook, Instagram, Video, Youtube } from 'lucide-react';
 
-export default function Footer({ onOpenStudio, onNavigate }) {
+export default function Footer({ onNavigate }) {
   return (
     <footer id="footer" className="bg-[#050A10] border-t border-blue-500/20 py-10 text-gray-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -98,7 +98,7 @@ export default function Footer({ onOpenStudio, onNavigate }) {
             <a 
               href="https://facebook.com" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#0066FF] hover:text-white flex items-center justify-center text-gray-300 transition"
               aria-label="Facebook"
             >
@@ -107,7 +107,7 @@ export default function Footer({ onOpenStudio, onNavigate }) {
             <a 
               href="https://instagram.com" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#0066FF] hover:text-white flex items-center justify-center text-gray-300 transition"
               aria-label="Instagram"
             >
@@ -116,7 +116,7 @@ export default function Footer({ onOpenStudio, onNavigate }) {
             <a 
               href="https://tiktok.com" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#0066FF] hover:text-white flex items-center justify-center text-gray-300 transition"
               aria-label="TikTok"
             >
@@ -125,7 +125,7 @@ export default function Footer({ onOpenStudio, onNavigate }) {
             <a 
               href="https://youtube.com" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#0066FF] hover:text-white flex items-center justify-center text-gray-300 transition"
               aria-label="YouTube"
             >

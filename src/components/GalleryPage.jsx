@@ -13,11 +13,10 @@ import {
   SlidersHorizontal,
   X
 } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
 export default function GalleryPage({
-  onBackToHome,
-  onOpenStudio,
-  onOpenQuote
+  onBackToHome
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,14 +57,14 @@ export default function GalleryPage({
     const text = encodeURIComponent(
       `Bonjour SMART KARA DESIGN, je suis intéressé(e) par la réalisation "${item.title}" vue dans la galerie.`
     );
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   const handleWhatsAppGeneral = () => {
     const text = encodeURIComponent(
       "Bonjour SMART KARA DESIGN, je souhaite des renseignements sur vos réalisations en galerie et échanger sur un projet personnalisé."
     );
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (
@@ -270,13 +269,6 @@ export default function GalleryPage({
                       <span>Matière :</span>
                       <span className="text-gray-200 font-medium line-clamp-1 max-w-[60%] text-right">{item.material}</span>
                     </div>
-
-                    {item.priceEstimate && (
-                      <div className="text-[11px] text-gray-400 flex items-center justify-between">
-                        <span>Estimation :</span>
-                        <span className="text-[#0066FF] font-bold">{item.priceEstimate}</span>
-                      </div>
-                    )}
                   </div>
 
                   {/* Actions Bar */}
@@ -325,27 +317,11 @@ export default function GalleryPage({
 
             <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
               <button
-                onClick={onOpenStudio}
-                className="px-7 py-3.5 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center gap-2 hover:scale-105 cursor-pointer"
-              >
-                <Sparkles className="w-4 h-4" />
-                Ouvrir le Studio 3D
-              </button>
-
-              <button
                 onClick={handleWhatsAppGeneral}
                 className="px-7 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-600/30 flex items-center gap-2 hover:scale-105 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 Discuter sur WhatsApp
-              </button>
-
-              <button
-                onClick={onOpenQuote}
-                className="px-6 py-3.5 rounded-full border border-gray-300 hover:border-gray-400 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
-              >
-                <FileText className="w-4 h-4 text-gray-600" />
-                Demander un devis
               </button>
             </div>
           </div>
@@ -359,7 +335,6 @@ export default function GalleryPage({
           onClose={() => setActiveLightboxIndex(null)}
           onNext={handleNext}
           onPrev={handlePrev}
-          onOpenStudio={onOpenStudio}
         />
       )}
 

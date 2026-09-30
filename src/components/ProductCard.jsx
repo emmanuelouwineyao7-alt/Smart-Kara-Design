@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageCircle, Eye } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
 export default function ProductCard({ product, onProductClick }) {
   const whatsappNumber = "22879800487";
@@ -7,9 +8,9 @@ export default function ProductCard({ product, onProductClick }) {
   const handleWhatsAppOrder = (e) => {
     e.stopPropagation();
     const message = encodeURIComponent(
-      `Bonjour SMART KARA DESIGN, je souhaite commander le produit "${product.title}" (${product.price.toLocaleString('fr-FR')} FCFA).`
+      `Bonjour SMART KARA DESIGN, je souhaite commander le produit "${product.title}".`
     );
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${message}`);
   };
 
   return (
@@ -57,14 +58,11 @@ export default function ProductCard({ product, onProductClick }) {
           </p>
         </div>
 
-        {/* Footer de la carte: Prix & Bouton WhatsApp */}
+        {/* Footer de la carte: Délai & Bouton WhatsApp */}
         <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
           <div>
-            <span className="font-extrabold text-emerald-400 text-sm sm:text-base block">
-              {product.price.toLocaleString('fr-FR')} {product.currency || 'FCFA'}
-            </span>
             {product.leadTime && (
-              <span className="text-[10px] text-gray-400 block font-medium">
+              <span className="text-[11px] text-gray-300 block font-medium">
                 Délai: {product.leadTime}
               </span>
             )}

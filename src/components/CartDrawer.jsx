@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Trash2, Plus, Minus, MessageSquare, ShoppingBag, ArrowRight } from 'lucide-react';
+import { sanitizeInput, safeOpenWindow } from '../utils/security';
 
 export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onClearCart }) {
   const [currencyToggle, setCurrencyToggle] = useState('FCFA');
@@ -15,17 +16,20 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
   const handleWhatsAppCheckout = () => {
     if (cartItems.length === 0) return;
 
+    const cleanName = sanitizeInput(customerName);
+    const cleanAddress = sanitizeInput(customerAddress);
+
     let text = `*NOUVELLE COMMANDE — SMART KARA DESIGN (SKD)*\n\n`;
-    if (customerName) text += `*Client :* ${customerName}\n`;
-    text += `*Adresse/Lieu :* ${customerAddress}\n\n`;
+    if (cleanName) text += `*Client :* ${cleanName}\n`;
+    text += `*Adresse/Lieu :* ${cleanAddress || 'Kara, Togo'}\n\n`;
     text += `*PRODUITS COMMANDÉS :*\n`;
 
     cartItems.forEach((item, index) => {
-      text += `${index + 1}. *${item.title}* (x${item.quantity})\n`;
+      text += `${index + 1}. *${sanitizeInput(item.title)}* (x${item.quantity})\n`;
       text += `   - Prix: ${item.price.toLocaleString('fr-FR')} FCFA\n`;
-      if (item.customText) text += `   - Gravure : "${item.customText}"\n`;
-      if (item.material) text += `   - Matériau : ${item.material}\n`;
-      if (item.dimensions) text += `   - Dimensions : ${item.dimensions}\n`;
+      if (item.customText) text += `   - Gravure : "${sanitizeInput(item.customText)}"\n`;
+      if (item.material) text += `   - Matériau : ${sanitizeInput(item.material)}\n`;
+      if (item.dimensions) text += `   - Dimensions : ${sanitizeInput(item.dimensions)}\n`;
       text += `\n`;
     });
 
@@ -34,7 +38,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
     const encodedText = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-    window.open(whatsappUrl, '_blank');
+    safeOpenWindow(whatsappUrl);
   };
 
   return (

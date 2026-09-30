@@ -1,7 +1,15 @@
 import React from 'react';
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
-export default function ContactCTA({ onOpenQuote }) {
+export default function ContactCTA() {
+  const whatsappNumber = "22879800487";
+
+  const handleContactClick = () => {
+    const text = encodeURIComponent("Bonjour SMART KARA DESIGN, je souhaite des renseignements sur un projet.");
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
+  };
+
   return (
     <section id="contact" className="bg-[#050A10] text-white py-16 sm:py-20 border-t border-white/10 relative overflow-hidden">
       
@@ -24,15 +32,15 @@ export default function ContactCTA({ onOpenQuote }) {
             </div>
 
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl">
-              Contactez-nous dès maintenant pour un devis gratuit ou un conseil personnalisé.
+              Contactez-nous dès maintenant pour un conseil personnalisé ou passer commande.
             </p>
 
             <div className="pt-2">
               <button
-                onClick={onOpenQuote}
+                onClick={handleContactClick}
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-600/30 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
-                Nous contacter
+                Nous contacter sur WhatsApp
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

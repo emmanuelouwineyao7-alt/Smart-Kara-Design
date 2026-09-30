@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, ArrowRight, MessageCircle, Sun, Moon } from 'lucide-react';
+import { safeOpenWindow } from '../utils/security';
 
 export default function MobileMenu({
   isOpen,
@@ -8,8 +9,6 @@ export default function MobileMenu({
   activeSection,
   currentPage,
   onNavigate,
-  onOpenQuote,
-  onOpenStudio,
   theme = 'dark',
   onToggleTheme
 }) {
@@ -20,7 +19,7 @@ export default function MobileMenu({
   const handleWhatsAppClick = () => {
     onClose();
     const text = encodeURIComponent("Bonjour SMART KARA DESIGN, je souhaite passer une commande ou poser des questions sur vos créations.");
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    safeOpenWindow(`https://wa.me/${whatsappNumber}?text=${text}`);
   };
 
   return (
@@ -60,10 +59,7 @@ export default function MobileMenu({
                 href={link.href}
                 onClick={(e) => {
                   onClose();
-                  if (link.isStudio) {
-                    e.preventDefault();
-                    onOpenStudio && onOpenStudio();
-                  } else if (link.isProducts) {
+                  if (link.isProducts) {
                     e.preventDefault();
                     onNavigate && onNavigate('products');
                   } else if (link.isGallery) {
